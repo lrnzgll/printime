@@ -63,3 +63,16 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+        en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: ": indica il tuo indirizzo email"
+            password: 
+              blank: ": aggiungi una password per il tuo account"
+              confirmation: ": password non riconosciuta"
+            password_confirmation:
+              blank: ": conferma la tua password"          

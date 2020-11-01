@@ -1,0 +1,57 @@
+.postdate {
+  display: grid;
+  grid-template-columns:  auto 20% auto;
+  grid-template-rows:  30% 30% 30%;
+  grid-template-areas: 
+  "month  year time"
+  "day    year time"
+  "day    year time"
+}
+
+.month, .day, .year, .time {
+  opacity: .8;
+  font-size: 12px;
+  text-transform: capitalize;
+  margin: 0;
+  font-family: $caption-font;
+}
+
+.month {
+  grid-area: month;
+  text-align: right;
+}
+.month>p {
+  margin: 0;
+  line-height: normal;
+}
+
+.day {
+  grid-area: day;
+  text-align: right;
+}
+.day>p {
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 0.5;
+}
+
+.year {
+  grid-area: year;
+}
+.year>p {
+  writing-mode: vertical-rl;
+  margin-top: 3px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.time {
+  grid-area: time;
+}
+.time>p{
+  font-size: 20px;
+  margin: 0;
+  margin-left: 5px;
+}
