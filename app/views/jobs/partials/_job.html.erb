@@ -1,23 +1,15 @@
 <li class='job'>
-  <p><%= job.title %></p>
+  <div class='job-title'>
+    <p><%= job.title %></p>
+  </div>
+
+  <div class='record'>
+    <%= link_to root_path, class:" d-flex justify-content-center align-items-center button button-circle button-caution" do %>
+      <i class="fas fa-play"></i>
+    <% end %>
+  </div>
 
   <div class='last-updated'>
-    <p class='caption'>
-      Ultima modifica
-    </p>
-<div class="postdate">
-  <div class="month">
-    <p><%= job.last_updated_month %></p>
-  </div>
-  <div class="day">
-    <p><%= job.last_updated_day %></p>
-  </div> 
-  <div class="year">
-    <p><%= job.last_updated_year %></p>
-  </div>
-  <div class="time">
-    <p><%= job.last_updated_time %></p>
-  </div> 
-</div>
+    <%= render partial: "jobs/partials/last_updated", locals: {job: job} %> 
   </div>
 </li>
