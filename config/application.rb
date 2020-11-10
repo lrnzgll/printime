@@ -8,10 +8,12 @@ Bundler.require(*Rails.groups)
 
 module Printime
   class Application < Rails::Application
+    ActiveRecord::Base.verbose_query_logs = true
     config.generators do |generate|
       generate.assets false
       generate.helper false
-      generate.test_framework :test_unit, fixture: false
+      generate.test_framework :rspec
+      generate.integration_tool :rspec
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0

@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.all.decorate
+    @jobs = Job.order(updated_at: :desc).decorate
   end
 
   def show
@@ -17,13 +17,11 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    @job.user = current_user
+    if @job.save
+      redirect_to jobs_path notice: "Hai creato #{@job.title}"
+    else
+      render :new
     end
   end
 
@@ -45,11 +43,12 @@ class JobsController < ApplicationController
   end
 
   private
+
     def set_job
       @job = Job.find(params[:id])
     end
 
     def job_params
-      params.require(:job).permit(:name)
+      params.require(:job).permit(:title)
     end
 end

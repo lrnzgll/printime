@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      format: "%{message}"
+      models:
+        job:
+          attributes:
+            title:
+              blank: "You can't create an item without a name."

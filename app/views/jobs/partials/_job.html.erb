@@ -3,13 +3,13 @@
     <p><%= job.title %></p>
   </div>
 
-  <div class='record'>
+  <div class='record d-flex justify-content-end'>
     <%= link_to root_path, class:" d-flex justify-content-center align-items-center button button-circle button-caution" do %>
       <i class="fas fa-play"></i>
     <% end %>
   </div>
 
   <div class='last-updated'>
-    <%= render partial: "jobs/partials/last_updated", locals: {job: job} %> 
+    <%= render partial: "jobs/partials/last_updated", locals: {job: job} %>
   </div>
 </li>
