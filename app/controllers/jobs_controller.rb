@@ -44,11 +44,11 @@ class JobsController < ApplicationController
 
   private
 
-    def set_job
-      @job = Job.find(params[:id]).decorate
-    end
+  def set_job
+    @job = Job.find(params[:id]).decorate
+  end
 
-    def job_params
-      params.require(:job).permit(:title)
-    end
+  def job_params
+    params.require(:job).permit(:title)
+  end
 end

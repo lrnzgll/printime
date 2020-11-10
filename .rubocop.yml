@@ -9,7 +9,10 @@ AllCops:
     - 'support/**/*'
     - 'tmp/**/*'
     - 'test/**/*'
-
+Style/SymbolArray:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
 Style/ConditionalAssignment:
   Enabled: false
 Style/StringLiterals:
