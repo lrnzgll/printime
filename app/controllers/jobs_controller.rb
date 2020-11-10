@@ -9,7 +9,7 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new
+    @job = Job.new.decorate
   end
 
   def edit
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
   private
 
     def set_job
-      @job = Job.find(params[:id])
+      @job = Job.find(params[:id]).decorate
     end
 
     def job_params

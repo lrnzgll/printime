@@ -8,7 +8,7 @@ ul#jobs{
     margin-bottom: 0;
   }
 }
-li.job {
+li.job-card {
   margin-bottom: 20px;
   background: #fff;
   border-radius: 2px;
@@ -46,6 +46,25 @@ li.job {
     right: 10px;
     bottom: 10px;
     margin-right: 10px;
+
+    text-align: center;
+    max-width: 200px;
+  }
+
+  .created-at {
+    position: absolute;
+    right: 110px;
+    bottom: 10px;
+    margin-right: 10px;
+
+    text-align: center;
+    max-width: 200px;
+  }
+  .job-link {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    margin-left: 10px;
 
     text-align: center;
     max-width: 200px;
