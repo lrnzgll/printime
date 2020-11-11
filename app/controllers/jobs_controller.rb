@@ -2,7 +2,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:destroy_intention, :show, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.order(updated_at: :desc).decorate
+    @jobs = current_user.jobs.order(updated_at: :desc).decorate
+    policy_scope(@jobs.object)
   end
 
   def show
@@ -10,6 +11,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new.decorate
+    authorize(@job)
   end
 
   def edit
@@ -18,6 +20,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
+    authorize @job
     if @job.save
       redirect_to @job
     else
@@ -33,7 +36,8 @@ class JobsController < ApplicationController
     end
   end
 
-  def destroy_intention; end
+  def destroy_intention
+  end
 
   def destroy
     @job.destroy
@@ -42,8 +46,13 @@ class JobsController < ApplicationController
 
   private
 
+  def job_policy(collection, action)
+    collection.each { |j| authorize j, action }
+  end
+
   def set_job
     @job = Job.find(params[:id]).decorate
+    authorize @job
   end
 
   def job_params
