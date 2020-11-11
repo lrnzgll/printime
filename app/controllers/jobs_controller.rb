@@ -19,19 +19,17 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
     if @job.save
-      redirect_to jobs_path notice: "Hai creato #{@job.title}"
+      redirect_to @job
     else
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @job.update(job_params)
+      redirect_to @job
+    else
+      render :edit
     end
   end
 

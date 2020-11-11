@@ -9,6 +9,9 @@ AllCops:
     - 'support/**/*'
     - 'tmp/**/*'
     - 'test/**/*'
+
+Metrics/BlockLength:
+  Enabled: false
 Style/SymbolArray:
   Enabled: false
 Style/Lambda:

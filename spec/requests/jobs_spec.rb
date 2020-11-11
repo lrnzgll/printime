@@ -47,16 +47,16 @@ RSpec.describe "Jobs", type: :request do
         post jobs_path, params: { job: { title: job.title, user_id: job.user.id } }
         expect(user.jobs.count).to eq(1)
         expect(response).to have_http_status(302)
+        expect(response).to redirect_to(job_path(user.jobs.last))
       end
     end
   end
 
   describe "GET edit_job_path" do
     context 'not_authenticated' do
-      include_examples "authenticated", :edit_job do
-        let(:user) { create(:user) }
-        let!(:obj) { create(:job, user: user) }
-      end
+      let(:user) { create(:user) }
+      let(:jj) { create(:job, user: user) }
+      it_behaves_like "authenticated", :edit_job
     end
     context 'authenticated' do
       let(:user) { create(:user) }
@@ -64,14 +64,39 @@ RSpec.describe "Jobs", type: :request do
       before do
         sign_in user
       end
+      it 'renders the edit page' do
+        get edit_job_path(job)
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe "PATCH job_path" do
+    context 'not_authenticated' do
+      let(:user) { create(:user) }
+      let(:jj) { create(:job, user: user) }
+      include_examples "authenticated", :job, :patch
+    end
+    context 'authenticated' do
+      let(:user) { create(:user) }
+      let(:job) { create(:job, user: user) }
+      before do
+        sign_in user
+      end
+      it 'update the job' do
+        patch job_path(job), params: { job: { title: 'new title' } }
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(job_path(job))
+      end
     end
   end
 
   describe "GET job_path" do
     context 'not authenticated' do
-      include_examples "authenticated", :job do
-        let(:obj) { create(:job, user: create(:user)) }
-      end
+      let(:user) { create(:user) }
+      let(:jj) { create(:job, user: user) }
+      include_examples "authenticated", :job
     end
     context 'authenticated' do
       let(:user) { create(:user) }

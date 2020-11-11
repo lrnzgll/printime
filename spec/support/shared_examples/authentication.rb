@@ -7,10 +7,7 @@ RSpec.shared_examples "authenticated" do |path, *method|
         get p
       end
     end
-
-    obj = obj if defined?(obj)
-
-    method.call(public_send("#{path}_path", obj))
+    method.call(public_send("#{path}_path", jj))
     expect(response).to have_http_status(302)
     expect(response).to redirect_to(new_user_session_path)
   end
