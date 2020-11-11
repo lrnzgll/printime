@@ -110,4 +110,25 @@ RSpec.describe "Jobs", type: :request do
       end
     end
   end
+
+  describe "DELETE job_path" do
+    context 'not authenticated' do
+      let(:user) { create(:user) }
+      let(:jj) { create(:job, user: user) }
+      include_examples "authenticated", :job, :delete
+    end
+    context 'authenticated' do
+      let(:user) { create(:user) }
+      let(:job) { create(:job, user: user) }
+      before do
+        sign_in user
+      end
+      it 'delete the job' do
+        delete job_path(job)
+        expect(user.jobs.count).to eq(0)
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(jobs_path)
+      end
+    end
+  end
 end

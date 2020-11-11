@@ -1,6 +1,9 @@
 <div class='container'>
   <div class='d-flex justify-content-between'>
     <h1><%= @job.title %></h1>
+    <%= link_to destroy_intention_job_path(@job), class: 'align-self-center' do %>
+      <i class="fas fa-trash-alt fa-2x"></i>
+    <% end %>
   </div>
     <%= render 'form', job: @job %>
 </div>

@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:destroy_intention, :show, :edit, :update, :destroy]
 
   def index
     @jobs = Job.order(updated_at: :desc).decorate
@@ -33,11 +33,11 @@ class JobsController < ApplicationController
     end
   end
 
+  def destroy_intention; end
+
   def destroy
     @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
-    end
+    redirect_to jobs_path
   end
 
   private

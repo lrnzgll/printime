@@ -1,0 +1,10 @@
+<div class="container">
+  <div>
+    <h1><%= @job.title %></h1>
+    <p>Vuoi rimuovere questo lavoro?</p>
+    <p>Tutti i dati relativi a questo lavoro verranno immediatamenti cancellati</p>
+    <%= link_to job_path(@job), method: 'delete', class:'button button-caution' do %>
+      Delete
+    <% end %>
+  </div>
+</div>
