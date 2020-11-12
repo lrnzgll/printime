@@ -7,6 +7,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @content = JobShowFacade.new(@job)
   end
 
   def new
