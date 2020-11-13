@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   def index
     @jobs = current_user.jobs.order(updated_at: :desc).decorate
     policy_scope(@jobs.object)
+    empty_state?
   end
 
   def show
@@ -46,6 +47,10 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def empty_state?
+    return render 'jobs/empty/index' if @jobs.empty?
+  end
 
   def job_policy(collection, action)
     collection.each { |j| authorize j, action }
