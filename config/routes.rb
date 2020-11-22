@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get 'pages/logout', to: 'pages#logout'
 
   resources :jobs do
+    resources :periods, except: [:index]
     resources :exports
   end
+  get 'periods', to: 'periods#index', as: 'periods'
 
   get 'exports', to: 'exports#home', as: 'exports'
-
-  resources :periods
   get 'jobs/::id/delete',  to: 'jobs#destroy_intention', as: 'destroy_intention_job'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

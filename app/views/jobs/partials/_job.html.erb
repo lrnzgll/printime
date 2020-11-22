@@ -4,16 +4,11 @@
   </div>
 
   <div class='record d-flex justify-content-end'>
-    <%= link_to root_path, class:" d-flex justify-content-center align-items-center button button-circle button-caution" do %>
-      <i class="fas fa-play"></i>
-    <% end %>
+    <%= render partial: "jobs/partials/new_period_form", locals: {job: job} %>
   </div>
   <%= link_to job_path(job), class: 'job-link' do %>
     <i class="fas fa-folder fa-3x"></i>
   <% end %>
-  <div class='created-at'>
-    <%= render partial: "jobs/partials/created_at", locals: {job: job} %>
-  </div>
   <div class='last-updated'>
     <%= render partial: "jobs/partials/last_updated", locals: {job: job} %>
   </div>
