@@ -1,4 +1,4 @@
-<%= simple_form_for(job.periods.new) do |f| %>
+<%= simple_form_for([job, job.periods.new]) do |f| %>
   <%= f.button :button do %>
     <div class='d-flex justify-content-center align-items-center button button-circle button-caution'>
       <i class="fas fa-play"></i>

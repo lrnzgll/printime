@@ -1,16 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe "Jobs", type: :request do
-  describe "POST /periods" do
+  describe 'GET /periods' do
     context 'not authenticated' do
       include_examples "authenticated", :periods
+    end
+  end
+  describe "POST /jobs/:id/periods" do
+    context 'not authenticated' do
+      let(:user) { create(:user) }
+      let(:jj) { create(:job, user: user) }
+      include_examples "authenticated", :job_periods, :post
     end
     context 'authenticated' do
       let(:user) { create(:user) }
       let(:job) { create(:job, user: user) }
 
       it 'creates a new period' do
-        post periods_path(@job)
+        post job_periods_path(job)
       end
     end
   end
