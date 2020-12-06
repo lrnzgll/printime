@@ -2,13 +2,13 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:destroy_intention, :show, :edit, :update, :destroy]
 
   def index
-    @jobs = current_user.jobs.order(updated_at: :desc).decorate
-    policy_scope(@jobs.object)
+    @content = JobFacades::IndexFacade.new(team_member: current_user)
+    policy_scope(@content.jobs.object)
     empty_state?
   end
 
   def show
-    @content = JobShowFacade.new(@job)
+    @content = JobFacades::ShowFacade.new(@job)
   end
 
   def new
@@ -49,7 +49,7 @@ class JobsController < ApplicationController
   private
 
   def empty_state?
-    return render 'jobs/empty/index' if @jobs.empty?
+    return render 'jobs/empty/index' if @content.jobs.empty?
   end
 
   def job_policy(collection, action)

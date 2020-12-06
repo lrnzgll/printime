@@ -22,4 +22,8 @@ class PeriodPolicy < ApplicationPolicy
   def create?
     user.user.id == period.user_id && user.user.id == user.job.user_id
   end
+
+  def stop?
+    user.user.id == period.user_id && user.user.id == user.job.user_id
+  end
 end

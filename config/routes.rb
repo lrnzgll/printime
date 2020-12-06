@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :jobs do
     resources :periods, except: [:index]
+    patch 'periods/:id/stop', to: 'periods#stop', as: 'stop_period'
     resources :exports
   end
   get 'periods', to: 'periods#index', as: 'periods'

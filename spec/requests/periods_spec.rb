@@ -21,4 +21,16 @@ RSpec.describe "Jobs", type: :request do
       end
     end
   end
+
+  describe "PATCH stop" do
+    xit "stop" do
+
+    end
+  end
+
+  describe "POST create" do
+    xit "save" do
+
+    end
+  end
 end

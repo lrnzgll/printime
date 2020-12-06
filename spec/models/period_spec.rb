@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Period, type: :model do
-  describe "Associations" do
-    it { should belong_to(:job) }
-    it { should belong_to(:user) }
+  describe "Validations" do
+    xit "#save" do
+
+    end
+    xit "#stop" do
+
+    end
   end
 end

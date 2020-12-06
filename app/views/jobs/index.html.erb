@@ -6,6 +6,6 @@
     <% end %>
   </div>
   <ul id='jobs'>
-    <%= render partial: "jobs/partials/job", collection: @jobs %>
+    <%= render partial: "jobs/partials/job", collection: @content.job_card_facades, as: :content %>
   </ul>
 </div>

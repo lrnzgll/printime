@@ -1,0 +1,7 @@
+<%= simple_form_for([job, period],url: job_stop_period_path(job, period), method: 'patch') do |f| %>
+  <%= f.button :button do %>
+    <div class='d-flex justify-content-center align-items-center button button-circle button-caution'>
+      <i class="fas fa-stop"></i>
+    </div>
+  <% end %>
+<% end %>

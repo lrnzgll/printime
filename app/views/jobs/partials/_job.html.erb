@@ -1,15 +1,19 @@
 <li class='job-card'>
   <div class='job-title'>
-    <p><%= job.title %></p>
+    <p><%= content.job_title %></p>
   </div>
 
   <div class='record d-flex justify-content-end'>
-    <%= render partial: "jobs/partials/new_period_form", locals: {job: job} %>
+    <% if content.active_job? %>
+      <%= render partial: "jobs/partials/stop_period_form", locals: { job: content.job, period: content.active_period } %>
+    <% else %>
+      <%= render partial: "jobs/partials/new_period_form", locals: {job: content.job} %>
+    <% end %>
   </div>
-  <%= link_to job_path(job), class: 'job-link' do %>
+  <%= link_to job_path(content.job), class: 'job-link' do %>
     <i class="fas fa-folder fa-3x"></i>
   <% end %>
   <div class='last-updated'>
-    <%= render partial: "jobs/partials/last_updated", locals: {job: job} %>
+    <%= render partial: "jobs/partials/last_updated", locals: {job: content.job} %>
   </div>
 </li>
