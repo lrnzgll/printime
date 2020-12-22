@@ -1,5 +1,5 @@
 <ul>
-  <li>
+  <li class="<%= "active" if current_page?(root_path) %>">
     <%= link_to root_path do %>
       <i class="fa fa-home fa-2x"></i>
       <span class="nav-text">
@@ -8,7 +8,7 @@
     <% end %>
   </li>
   </li>
-  <li>
+  <li class="<%= "active" if current_page?(jobs_path) %>">
     <%= link_to jobs_path do %>
       <i class="fa fa-pencil-alt fa-2x"></i>
       <span class="nav-text">
@@ -16,7 +16,7 @@
       </span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= "active" if current_page?(periods_path)%>">
     <%= link_to periods_path do %>
         <i class="fa fa-calendar fa-2x"></i>
         <span class="nav-text">
@@ -24,7 +24,7 @@
         </span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= "active" if current_page?(exports_path)%>">
     <%= link_to exports_path do %>
       <i class="fa fa-file-download fa-2x"></i>
       <span class="nav-text">
@@ -35,7 +35,7 @@
 </ul>
 
 <ul class="logout">
-  <li>
+  <li class="<%= "active" if current_page?(pages_logout_path)%>">
     <%= link_to pages_logout_path do %>
       <i class="fa fa-power-off fa-2x"></i>
         <span class="nav-text">
